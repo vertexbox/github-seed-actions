@@ -21,6 +21,12 @@ runs:
         fetch-depth: 0
 
     - name: git-revision-count
+      id: git_rev_count
       uses: vertexbox/github-seed-actions/git/git-revision-count@master
       with:
         ref: ${{ github.ref }}
+
+    - name: git-revision-count
+      run: |
+        echo ${{ steps.git_rev_count.outputs.count }}
+      shell: bash

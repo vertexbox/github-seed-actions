@@ -19,6 +19,7 @@ on:
       - common/**
       - container/**
       - git/**
+      - .github/workflows/run-unit-tests..yaml
 
 defaults:
   run:
