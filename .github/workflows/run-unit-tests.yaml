@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
   push:
     path:
-      - common/**
-      - container/**
-      - git/**
+      - common/**/*.yaml
+      - container/**/*.yaml
+      - git/**/*.yaml
       - .github/workflows/run-unit-tests..yaml
 
 defaults:
