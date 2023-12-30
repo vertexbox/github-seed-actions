@@ -1,0 +1,53 @@
+#                 _            _
+# __   _____ _ __| |_ _____  _| |__   _____  __
+# \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
+#  \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
+#   \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
+#
+#
+# Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
+#
+# This is a open-source software, licensed under the MIT License.
+# See /License for more information.
+
+name: Dump contexts to log
+description: "dump github contexts from workflow run to console log"
+
+runs:
+  using: composite
+  steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      shell: bash
+
+    - name: Dump job context
+      env:
+        JOB_CONTEXT: ${{ toJson(job) }}
+      run: echo "$JOB_CONTEXT"
+      shell: bash
+
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
+      shell: bash
+
+    - name: Dump runner context
+      env:
+        RUNNER_CONTEXT: ${{ toJson(runner) }}
+      run: echo "$RUNNER_CONTEXT"
+      shell: bash
+
+    - name: Dump strategy context
+      env:
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: echo "$STRATEGY_CONTEXT"
+      shell: bash
+
+    - name: Dump matrix context
+      env:
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      run: echo "$MATRIX_CONTEXT"
+      shell: bash

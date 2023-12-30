@@ -10,17 +10,11 @@
 # This is a open-source software, licensed under the MIT License.
 # See /License for more information.
 
-name: export-github-context unit test
-description: Test export-github-context composite action
+name: log-github-context unit test
+description: Test log-github-context composite action
 
 runs:
   using: composite
   steps:
-    - name: export-context
-      id: export
-      uses: vertexbox/github-seed-actions/common/export-github-context@master
-
-    - name: inspect outputs
-      shell: bash
-      run: |
-        echo ${{ steps.export.outputs.context }}
+    - name: log-github-context
+      uses: vertexbox/github-seed-actions/common/log-github-context@master
