@@ -13,7 +13,7 @@
 name: Test export-github-context composite action
 
 on:
-  workflow_dispatch:
+  workflow_call:
   pull_request:
     types: [ opened, synchronize, reopened, ready_for_review ]
     paths:

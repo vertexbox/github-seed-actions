@@ -15,6 +15,11 @@ name: Run unit tests
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: tests # The working directory path
+
 jobs:
   export-github-context-unit-test:
-    uses: vertexbox/github-seed-actions/.github/workflows/tests/export-github-context.yml@master
+    working-directory: client
+    uses: vertexbox/github-seed-actions/.github/tests/export-github-context.yml@master
