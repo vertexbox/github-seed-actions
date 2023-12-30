@@ -37,3 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: vertexbox/github-seed-actions/git/git-revision-count/test@master
+
+  git-git-commit-metadata-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vertexbox/github-seed-actions/git/git-commit-metadata/test@master

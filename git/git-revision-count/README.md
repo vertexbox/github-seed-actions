@@ -1,6 +1,6 @@
 # Git Revision Count Action
 
-A GitHub Action for retrieve the total number of revision based on a given git ref.
+A GitHub Action to retrieve the total number of revision based on a given git ref.
 
 ## Inputs
 
@@ -21,8 +21,6 @@ outputs:
     value: ${{ steps.rev_count.outputs.count }}
 ```
 
-Description: The number of revisions based on the given git ref
-
 ## Example workflow
 
 ```yml
@@ -35,7 +33,7 @@ steps:
     id: git_rev_count
     uses: vertexbox/github-seed-actions/git/git-revision-count@master
     with:
-    ref: ${{ github.ref }}
+      ref: ${{ github.ref }}
 
   - name: git-revision-count
     run: |

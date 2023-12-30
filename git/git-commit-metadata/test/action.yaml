@@ -1,0 +1,36 @@
+#                  _            _
+#  __   _____ _ __| |_ _____  _| |__   _____  __
+#  \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
+#   \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
+#    \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
+#
+#
+#  Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
+#
+#  This is a open-source software, licensed under the MIT License.
+#  See /License for more information.
+
+name: git-revision-count unit test
+description: Test git-revision-count composite action
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+
+    - name: git-commit-metadata
+      id: metadata
+      uses: vertexbox/github-seed-actions/git/git-commit-metadata@master
+      with:
+        repository: ${{ github.repository }}
+        # ref: ${{ github.event.pull_request.head.sha }} # pr
+        ref: ${{ github.sha }} # default_branch (master|main|develop)
+
+    - name: git-revision-count
+      run: |
+        echo ${{ steps.metadata.outputs.git_sha_long }}
+        echo ${{ steps.metadata.outputs.git_sha_short }}
+        echo ${{ steps.metadata.outputs.git_commit_msg }}
+      shell: bash

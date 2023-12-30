@@ -1,0 +1,47 @@
+#                  _            _
+#  __   _____ _ __| |_ _____  _| |__   _____  __
+#  \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
+#   \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
+#    \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
+#
+#
+#  Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
+#
+#  This is a open-source software, licensed under the MIT License.
+#  See /License for more information.
+
+name: Get git commit metadata
+description: "get the metadata associated to a specific git commit"
+
+inputs:
+  repository:
+    required: true
+    type: string
+  ref:
+    required: true
+    type: string
+  fetch-depth:
+    required: false
+    type: string
+    default: 0
+
+outputs:
+  git_sha_long: ${{ steps.metadata.outputs.git_sha_long }}
+  git_sha_short: ${{ steps.metadata.outputs.git_sha_short }}
+  git_commit_msg: ${{ steps.metadata.outputs.git_commit_msg }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@master
+      with:
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+
+    - name: Get metadata associated to the given ref
+      id: metadata
+      run: |
+        echo "git_sha_long=${{ inputs.ref }}" >> $GITHUB_OUTPUT
+        echo "git_sha_short=$(echo ${{ inputs.ref }} | cut -c1-6)" >> $GITHUB_OUTPUT
+        echo "git_commit_msg=$(git log --format=%s -n 1 ${{ inputs.ref }})" >> $GITHUB_OUTPUT
+      shell: bash
