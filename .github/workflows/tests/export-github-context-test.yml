@@ -1,0 +1,22 @@
+---
+name: Test export-github-context composite action
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    paths:
+      - "common/export-github-context/*.yml"
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: export-context
+        id: export
+        uses: vertexbox/github-seed-actions/common/export-github-context@ci/export-github-context
+
+      - name: inspect outputs
+        run: |
+          echo ${{ steps.export.outputs.context }}
+
