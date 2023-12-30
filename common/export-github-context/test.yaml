@@ -3,8 +3,8 @@
 # \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
 #  \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
 #   \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
-# 
-# 
+#
+#
 # Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
 #
 # This is a open-source software, licensed under the MIT License.
@@ -16,11 +16,10 @@ description: Test export-github-context composite action
 runs:
   using: composite
   steps:
-      - name: export-context
-        id: export
-        uses: vertexbox/github-seed-actions/common/export-github-context@master
+    - name: export-context
+      id: export
+      uses: vertexbox/github-seed-actions/common/export-github-context@master
 
-      - name: inspect outputs
-        run: |
-          echo ${{ steps.export.outputs.context }}
-
+    - name: inspect outputs
+      run: |
+        echo ${{ steps.export.outputs.context }}
