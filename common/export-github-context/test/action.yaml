@@ -21,5 +21,6 @@ runs:
       uses: vertexbox/github-seed-actions/common/export-github-context@master
 
     - name: inspect outputs
+      shell: bash
       run: |
         echo ${{ steps.export.outputs.context }}
