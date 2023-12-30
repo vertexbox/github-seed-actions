@@ -21,7 +21,6 @@ inputs:
 
 outputs:
   count:
-    type: string
     description: "git revision count"
     value: ${{ steps.rev_count.outputs.count }}
 
