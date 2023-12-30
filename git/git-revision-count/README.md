@@ -4,15 +4,22 @@ A GitHub Action for retrieve the total number of revision based on a given git r
 
 ## Inputs
 
-`ref`
-
-Description: **(Required)** git ref
-
-Default: `HEAD`
+```yaml
+inputs:
+  ref:
+    type: string
+    description: "git ref"
+    default: HEAD
+```
 
 ## Outputs
 
-`count`
+```yaml
+outputs:
+  count:
+    description: "git revision count"
+    value: ${{ steps.rev_count.outputs.count }}
+```
 
 Description: The number of revisions based on the given git ref
 

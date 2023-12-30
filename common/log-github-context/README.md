@@ -2,6 +2,10 @@
 
 A GitHub Action to dump relevant workflow context metadata to console log.
 
+## References
+
+<https://docs.github.com/en/actions/learn-github-actions/contexts>
+
 ## Example workflow
 
 ```yml
