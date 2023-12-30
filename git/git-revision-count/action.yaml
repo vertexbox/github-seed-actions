@@ -27,3 +27,4 @@ runs:
         REF: ${{ inputs.ref }}
       run: |
         echo "count=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
+      shell: bash
