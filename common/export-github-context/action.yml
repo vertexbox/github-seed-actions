@@ -1,0 +1,12 @@
+---
+name: Export github context
+description: "export github context from workflow run"
+
+runs:
+  using: composite
+  steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "context=$GITHUB_CONTEXT" >> $GITHUB_OUTPUT
