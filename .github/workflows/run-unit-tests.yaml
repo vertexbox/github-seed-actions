@@ -1,14 +1,14 @@
-#                 _            _
-# __   _____ _ __| |_ _____  _| |__   _____  __
-# \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
-#  \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
-#   \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
+#                  _            _
+#  __   _____ _ __| |_ _____  _| |__   _____  __
+#  \ \ / / _ \ '__| __/ _ \ \/ / '_ \ / _ \ \/ /
+#   \ V /  __/ |  | ||  __/>  <| |_) | (_) >  <
+#    \_/ \___|_|   \__\___/_/\_\_.__/ \___/_/\_\
 #
 #
-# Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
+#  Copyright (C) 2023-2024 @vertexbox <https://github.com/vertexbox>
 #
-# This is a open-source software, licensed under the MIT License.
-# See /License for more information.
+#  This is a open-source software, licensed under the MIT License.
+#  See /License for more information.
 
 name: Run unit tests
 
@@ -20,7 +20,14 @@ defaults:
     working-directory: tests # The working directory path
 
 jobs:
-  export-github-context-unit-test:
+  # common
+  common-log-github-context-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vertexbox/github-seed-actions/common/log-github-context/test@master
+
+  # git
+  git-get-revision-count-unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: vertexbox/github-seed-actions/common/log-github-context/test@master

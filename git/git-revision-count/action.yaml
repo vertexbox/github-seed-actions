@@ -10,11 +10,20 @@
 #  This is a open-source software, licensed under the MIT License.
 #  See /License for more information.
 
-name: log-github-context unit test
-description: Test log-github-context composite action
+name: Get git revision count
+description: "get the number of git revision associated to a specific ref"
+
+inputs:
+  ref:
+    type: string
+    description: "git ref"
 
 runs:
   using: composite
   steps:
-    - name: log-github-context
-      uses: vertexbox/github-seed-actions/common/log-github-context@master
+    - name: Get revision count
+      id: rev_count
+      env:
+        REF: ${{ inputs.ref }}
+      run: |
+        echo "count=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
