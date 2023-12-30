@@ -19,7 +19,7 @@ on:
       - common/**/*.yaml
       - container/**/*.yaml
       - git/**/*.yaml
-      - .github/workflows/run-unit-tests..yaml
+      - .github/workflows/run-unit-tests.yaml
 
 defaults:
   run:
