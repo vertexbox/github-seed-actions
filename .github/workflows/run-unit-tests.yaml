@@ -30,4 +30,4 @@ jobs:
   git-get-revision-count-unit-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: vertexbox/github-seed-actions/common/log-github-context/test@master
+      - uses: vertexbox/github-seed-actions/git/git-revision-count/test@master
