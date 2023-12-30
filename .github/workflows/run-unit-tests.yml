@@ -21,5 +21,6 @@ defaults:
 
 jobs:
   export-github-context-unit-test:
-    working-directory: client
-    uses: vertexbox/github-seed-actions/common/export-github-context/test.yml@master
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vertexbox/github-seed-actions/common/export-github-context/test.yml@master
