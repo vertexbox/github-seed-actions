@@ -19,5 +19,6 @@ runs:
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
+      shell: bash
       run: |
         echo "context=$GITHUB_CONTEXT" >> $GITHUB_OUTPUT
