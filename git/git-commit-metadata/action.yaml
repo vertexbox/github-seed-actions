@@ -26,9 +26,12 @@ inputs:
     default: 0
 
 outputs:
-  git_sha_long: ${{ steps.metadata.outputs.git_sha_long }}
-  git_sha_short: ${{ steps.metadata.outputs.git_sha_short }}
-  git_commit_msg: ${{ steps.metadata.outputs.git_commit_msg }}
+  git_sha_long:
+    value: ${{ steps.metadata.outputs.git_sha_long }}
+  git_sha_short:
+    value: ${{ steps.metadata.outputs.git_sha_short }}
+  git_commit_msg:
+    value: ${{ steps.metadata.outputs.git_commit_msg }}
 
 runs:
   using: composite
