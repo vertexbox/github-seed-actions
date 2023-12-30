@@ -22,4 +22,4 @@ defaults:
 jobs:
   export-github-context-unit-test:
     working-directory: client
-    uses: vertexbox/github-seed-actions/.github/tests/export-github-context.yml@master
+    uses: vertexbox/github-seed-actions/common/export-github-context/test.yml@master
