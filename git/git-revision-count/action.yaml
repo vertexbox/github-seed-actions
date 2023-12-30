@@ -17,6 +17,13 @@ inputs:
   ref:
     type: string
     description: "git ref"
+    default: HEAD
+
+outputs:
+  count:
+    type: string
+    description: "git revision count"
+    value: ${{ steps.rev_count.outputs.count }}
 
 runs:
   using: composite
@@ -26,5 +33,5 @@ runs:
       env:
         REF: ${{ inputs.ref }}
       run: |
-        echo "count=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
+        echo "count=$(git rev-list --count $REF)" >> $GITHUB_OUTPUT
       shell: bash
