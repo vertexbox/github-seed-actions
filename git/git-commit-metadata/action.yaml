@@ -46,5 +46,5 @@ runs:
       run: |
         echo "git_sha_long=${{ inputs.ref }}" >> $GITHUB_OUTPUT
         echo "git_sha_short=$(echo ${{ inputs.ref }} | cut -c1-6)" >> $GITHUB_OUTPUT
-        echo "git_commit_msg=$(git log --format=%s -n 1 ${{ inputs.ref }})" >> $GITHUB_OUTPUT
+        echo "git_commit_msg='$(git log --format=%s -n 1 ${{ inputs.ref }})'" >> $GITHUB_OUTPUT
       shell: bash
