@@ -19,6 +19,7 @@ on:
       - common/**/*.yaml
       - container/**/*.yaml
       - git/**/*.yaml
+      - github/**/*.yaml
       - .github/workflows/run-unit-tests.yaml
 
 defaults:
@@ -48,4 +49,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: vertexbox/github-seed-actions/github/rss-to-issue/test@master
-    secrets: inherit
+        secrets: inherit
