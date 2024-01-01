@@ -42,3 +42,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: vertexbox/github-seed-actions/git/git-commit-metadata/test@master
+
+  # github
+  rss-to-issue-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vertexbox/github-seed-actions/github/rss-to-issue/test@master
+    secrets: inherit
