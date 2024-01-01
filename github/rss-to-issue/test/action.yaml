@@ -13,12 +13,17 @@
 name: rss-to-issue unit test
 description: Test rss-to-issue composite action
 
+inputs:
+  token:
+    description: "Github PAT"
+    required: true
+
 runs:
   using: composite
   steps:
     - uses: git-for-windows/rss-to-issues@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ inputs.token }}
         feed: https://github.com/kubernetes/kubernetes/tags.atom
         prefix: "[Git]"
         character-limit: 255

@@ -49,3 +49,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: vertexbox/github-seed-actions/github/rss-to-issue/test@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
