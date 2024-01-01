@@ -29,19 +29,30 @@ on:
     - cron: "37 7 * * *"
 
 jobs:
-  kubernetes-release:
+  monitor-git-release:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    strategy:
+      matrix:
+        include:
+          - project: kubernetes
+            labels: kubernetes/kubernetes
+            feed: https://github.com/kubernetes/kubernetes/releases.atom
+      fail-fast: false
     steps:
-      - uses: git-for-windows/rss-to-issues@master
+      - uses: git-for-windows/rss-to-issues@v0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          feed: https://github.com/kubernetes/kubernetes/tags.atom
-          prefix: "[Git]"
+          feed: ${{ matrix.feed }}
+          prefix: "[New ${{ matrix.project }} version]"
           character-limit: 255
           dry-run: false
-          max-age: 48h
-          labels: git
+          max-age: 30d
+          labels: github/release,automated-issue,${{ matrix.labels }}
 ```
+
+Real usage: <https://github.com/git-for-windows/git/blob/main/.github/workflows/monitor-components.yml>
 
 ## License
 
