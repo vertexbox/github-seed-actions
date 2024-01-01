@@ -10,7 +10,7 @@ A GitHub Action to creates GitHub issues from an RSS or Atom feed.
 
 Step
 
-```yml
+```yaml
 steps:
   uses: git-for-windows/rss-to-issues
   with:
@@ -20,16 +20,21 @@ steps:
 
 Complete
 
-```yml
-name: Monitor new Git versions
+```yaml
+name: Monitor new upstream git release versions
 
 on:
+  workflow_dispatch:
   schedule:
-    # Run this Action every day at 7:37am UTC
-    - cron: "37 7 * * *"
+    # Run this Action every day at 4:00pm UTC
+    - cron: "0 16 * * *"
+
+env:
+  CHARACTER_LIMIT: 1000
+  MAX_AGE: 7d
 
 jobs:
-  monitor-git-release:
+  scrape:
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -37,7 +42,7 @@ jobs:
       matrix:
         include:
           - project: kubernetes
-            labels: kubernetes/kubernetes
+            labels: kubernetes
             feed: https://github.com/kubernetes/kubernetes/releases.atom
       fail-fast: false
     steps:
@@ -46,9 +51,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           feed: ${{ matrix.feed }}
           prefix: "[New ${{ matrix.project }} version]"
-          character-limit: 255
+          character-limit: ${{ env.CHARACTER_LIMIT }}
           dry-run: false
-          max-age: 30d
+          max-age: ${{ env.MAX_AGE }}
           labels: github/release,automated-issue,${{ matrix.labels }}
 ```
 
