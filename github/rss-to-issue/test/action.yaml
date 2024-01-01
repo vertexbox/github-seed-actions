@@ -29,4 +29,4 @@ runs:
         character-limit: 255
         dry-run: false
         max-age: 48h
-        labels: git
+        labels: github/release,repo/kubernetes/kubernetes,automated-issue
